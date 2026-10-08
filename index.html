@@ -107,8 +107,6 @@
   .anchor { scroll-margin-top: 1rem; }
   footer { max-width: 1600px; margin: 0 auto 2rem; font-size: 12px; color: var(--gray); line-height: 1.7; text-align: center; }
   #menuBtn { display: none; }
-  #fsBtn { display: block; width: calc(100% - 2rem); margin: .9rem 1rem .3rem; background: var(--teal); color: #fff; border: none; font-size: 12.5px; padding: 7px 14px; }
-  #fsBtn:hover { background: #016b78; }
   @media (max-width: 1150px) { .grid2 { grid-template-columns: 1fr; } .grid4 { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 860px) {
     #sidebar { transform: translateX(-100%); transition: transform .2s; }
@@ -119,6 +117,74 @@
     .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
     .chart-wrap { height: 260px; }
   }
+
+  /* SUNUM MODU */
+  #sunum-ac { display: block; width: calc(100% - 2rem); margin: .9rem 1rem .3rem; background: var(--mint); color: #0b2a3a; border: none; font-weight: 700; font-size: 13.5px; padding: 9px 14px; }
+  #sunum-ac:hover { background: #fff; }
+  .hero .sunum-btn { margin-top: 1.4rem; background: var(--mint); color: #0b2a3a; border: none; font-weight: 700; font-size: 15px; padding: 10px 24px; border-radius: 24px; }
+  .hero .sunum-btn:hover { background: #fff; }
+  #sunum-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; height: 56px; background: var(--navy); color: #fff; z-index: 300; align-items: center; gap: 10px; padding: 0 16px; }
+  #sunum-bar button { color: #fff; border-color: #3b4f86; font-size: 18px; padding: 4px 16px; }
+  #sunum-bar button:hover { background: #243460; }
+  #sunum-bar button:disabled { opacity: .35; }
+  #sunum-bar .bilgi { flex: 1; font-size: 14px; color: #a8c8d8; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #sunum-bar .ilerleme { position: absolute; left: 0; top: 0; height: 3px; background: var(--mint); transition: width .35s; }
+  body.sunum { overflow: hidden; }
+  body.sunum #sidebar, body.sunum #menuBtn, body.sunum footer { display: none; }
+  body.sunum #sunum-bar { display: flex; }
+  body.sunum #main { margin: 0; padding: 0; height: 100vh; position: relative; }
+  body.sunum .section, body.sunum .hero { display: none; }
+  body.sunum .slide-on { display: block; position: absolute; top: 0; bottom: 56px; left: 0; right: 0; max-width: none; margin: 0; border-radius: 0; overflow-y: auto; box-shadow: none; }
+  body.sunum .slide-on.ileri { animation: girSag .4s ease; }
+  body.sunum .slide-on.geri { animation: girSol .4s ease; }
+  @keyframes girSag { from { transform: translateX(60px); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes girSol { from { transform: translateX(-60px); opacity: 0; } to { transform: none; opacity: 1; } }
+  body.sunum .hero.slide-on { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  body.sunum .hero .sunum-btn { display: none; }
+  /* sunumda bütün ölçüler ekran genişliğine bağlı: --u = 1920 pikselde 28px */
+  body.sunum { --u: clamp(17px, 1.46vw, 40px); }
+  body.sunum .slide-on { font-size: var(--u); }
+  body.sunum .hero h1 { font-size: 2.6em; }
+  body.sunum .hero .sub { font-size: 1.25em; }
+  body.sunum .hero p { font-size: .95em; max-width: 70vw; }
+  body.sunum .hero .badge { font-size: .7em; padding: .3em .9em; }
+  body.sunum .section-header { font-size: 1.25em; padding: .55em 1.6em; position: sticky; top: 0; z-index: 5; border-radius: 0; }
+  body.sunum .section-header .num { width: 1.5em; height: 1.5em; font-size: .8em; }
+  body.sunum .section-body { padding: .9em 2.2em 1.2em; max-width: none; margin: 0 auto; font-size: 1em; }
+  body.sunum .section-body > p, body.sunum .lead { font-size: 1em; line-height: 1.5; margin-bottom: .6em; }
+  body.sunum .card { font-size: .86em; line-height: 1.45; padding: .6em .8em; }
+  body.sunum .card h4 { font-size: 1.08em; }
+  body.sunum .card .tag { font-size: .6em; }
+  body.sunum .info-box, body.sunum .warn-box { font-size: .86em; line-height: 1.5; padding: .6em .9em; margin-top: .6em; }
+  body.sunum .formula { font-size: 1.05em; padding: .35em .8em; margin: .5em 0; }
+  body.sunum table { font-size: .78em; }
+  body.sunum th, body.sunum td { padding: .3em .6em; }
+  body.sunum #tb15 th, body.sunum #tb15 td, body.sunum #tb17 th, body.sunum #tb17 td { font-size: 1em; padding: .25em .5em; }
+  body.sunum td input { font-size: 1em; width: 7em; }
+  body.sunum .out { font-size: .64em; line-height: 1.5; }
+  body.sunum .cap, body.sunum .src { font-size: .66em; }
+  body.sunum .controls { gap: .4em; margin-bottom: .6em; }
+  body.sunum .controls label, body.sunum .controls .val { font-size: .78em; }
+  body.sunum button { font-size: .7em; padding: .3em .8em; }
+  body.sunum #sunum-bar button { font-size: 18px; }
+  body.sunum input[type=range] { width: 9em; }
+  body.sunum input[type=checkbox] { width: .9em; height: .9em; }
+  body.sunum .chart-wrap { height: 52vh; }
+  body.sunum .chart-wrap-sm { height: 40vh; }
+  body.sunum .grid2, body.sunum .grid3, body.sunum .grid4 { gap: .6em; }
+  body.sunum .stat-grid { gap: .4em; margin-top: .6em; grid-template-columns: repeat(auto-fit, minmax(6.5em, 1fr)); }
+  body.sunum .stat-card { padding: .35em; }
+  body.sunum .stat-card .value { font-size: 1.15em; }
+  body.sunum .stat-card .label { font-size: .58em; }
+  body.sunum .step { font-size: .8em; } body.sunum .steps { gap: .4em; }
+  body.sunum .qrow { font-size: .9em; padding: .35em 0; } body.sunum .qrow .fb { font-size: .8em; }
+  body.sunum .quiz summary { font-size: .95em; } body.sunum .quiz .ans { font-size: .88em; }
+  body.sunum h4 { font-size: .9em !important; }
+  body.sunum .hero p[style] { font-size: .7em !important; margin-top: 1.5em !important; }
+  body.sunum .gizli-p { display: none !important; }
+  .parca-no { margin-left: auto; font-size: .7em; color: #a8c8d8; font-weight: 600; }
+  @media (max-width: 860px) { #sunum-ac, .hero .sunum-btn { display: none; } }
+  @media print { #sunum-ac, #sunum-bar { display: none !important; } }
 </style>
 </head>
 <body>
@@ -126,7 +192,7 @@
 
 <nav id="sidebar">
   <div class="logo">Zaman Serisi Ekonometrisi I<small>1. Bölüm: Giriş ve Trend</small></div>
-  <button id="fsBtn" onclick="tamEkran()" title="Tam ekran (F)">⛶ Tam ekran</button>
+  <button id="sunum-ac" title="Her bölüm tam ekran, büyük yazı; oklar veya PageUp/PageDown ile geçiş">▶ Sunum modu</button>
   <div class="section-label">Giriş</div>
   <a href="#s1">1. Ekonometrinin Amaçları</a>
   <a href="#s2">2. Neden Öngörü?</a>
@@ -152,6 +218,15 @@
   <a href="#s18">18. Kendini Dene</a>
 </nav>
 
+<div id="sunum-bar">
+  <div class="ilerleme" id="sb-ilerleme"></div>
+  <button id="sb-geri" title="Önceki (sol ok, PageUp)">‹</button>
+  <div class="bilgi" id="sb-bilgi"></div>
+  <span style="font-size:12px;color:#6f86a8;white-space:nowrap">Doç. Dr. M. Hanifi VAN</span>
+  <button id="sb-ileri" title="Sonraki (sağ ok, PageDown)">›</button>
+  <button id="sb-tam" title="Tam ekran (F)">⛶</button>
+  <button id="sb-cik" title="Sunumdan çık (Esc)">✕</button>
+</div>
 <div id="main">
 
 <div class="hero">
@@ -166,6 +241,7 @@
     <span class="badge" style="background:var(--c3)">Öngörü</span>
   </div>
   <p style="margin:1.4rem auto 0;font-size:13px">Doç. Dr. M. Hanifi VAN · Van Yüzüncü Yıl Üniversitesi, İİBF Ekonometri Bölümü</p>
+  <button class="sunum-btn" onclick="sunumAc()">▶ Sunum modunda aç</button>
 </div>
 
 <!-- 1 -->
@@ -845,11 +921,92 @@ const obs = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersect
 document.querySelectorAll(".section").forEach(s => obs.observe(s));
 links.forEach(a => a.addEventListener("click", () => $("sidebar").classList.remove("open")));
 
-function tamEkran(){ if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {}); else document.exitFullscreen(); }
-document.addEventListener("fullscreenchange", () => { $("fsBtn").textContent = document.fullscreenElement ? "✕ Tam ekrandan çık" : "⛶ Tam ekran"; });
-document.addEventListener("keydown", e => { if ((e.key === "f" || e.key === "F") && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) tamEkran(); });
 window.addEventListener("resize", () => Object.values(Chart.instances).forEach(c => c.resize()));
 build3(); build4(); build6(); build7(); build8(); build9(); build10(); build11(); build12(); renderTable13(); buildAll13();
+
+// ---------- sunum modu ----------
+// Her bölüm, ekran yüksekliğine göre ölçülüp birkaç slayda bölünür.
+// Başlık (h4) ve düğme satırı (.controls) ardındaki içerikten ayrılmaz.
+const BOLUMLER = [document.querySelector('.hero'), ...document.querySelectorAll('.section')];
+const KISIM = BOLUMLER.map(el => { const a = document.querySelector(`#sidebar a[href="#${el.id}"]`); let p = a ? a.previousElementSibling : null; while (p && !p.classList.contains('section-label')) p = p.previousElementSibling; return p ? p.textContent.toLocaleUpperCase('tr').charAt(0) + p.textContent.slice(1).toLocaleLowerCase('tr') : ''; });
+const BASLIK = BOLUMLER.map((el, i) => i === 0 ? 'Kapak' : el.querySelector('.section-header').innerText.replace(/^\S+\s*/, ''));
+BOLUMLER.slice(1).forEach(el => el.querySelector('.section-header').insertAdjacentHTML('beforeend', '<span class="parca-no"></span>'));
+const bitisik = el => el.tagName === 'H4' || el.classList.contains('cap') || el.classList.contains('controls') || el.classList.contains('kwn') ||
+  (el.tagName === 'P' && el.nextElementSibling && el.nextElementSibling.classList.contains('controls'));
+let SLAYT = [], si = 0, sonGorunen = 0;
+function parcala() {
+  SLAYT = [{ b: 0, parca: null, k: 1, n: 1 }];
+  BOLUMLER.slice(1).forEach((sec, i) => {
+    const body = sec.querySelector('.section-body'), kids = [...body.children];
+    const zorla = [...sec.querySelectorAll('[data-olc]')].map(e => [e, e.style.display]);
+    zorla.forEach(([e]) => e.style.display = '');
+    kids.forEach(c => c.classList.remove('gizli-p'));
+    sec.classList.add('slide-on');
+    const cs = getComputedStyle(body);
+    const bos = sec.clientHeight - sec.querySelector('.section-header').offsetHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 8;
+    const yuk = kids.map((c, j) => (j < kids.length - 1 ? kids[j + 1].offsetTop : body.offsetTop + body.offsetHeight - parseFloat(cs.paddingBottom)) - c.offsetTop);
+    sec.classList.remove('slide-on');
+    zorla.forEach(([e, d]) => e.style.display = d);
+    const birim = []; let cur = null;
+    kids.forEach((c, j) => { if (!cur) cur = { el: [], h: 0 }; cur.el.push(c); cur.h += yuk[j]; if (!bitisik(c) || j === kids.length - 1) { birim.push(cur); cur = null; } });
+    const dagit = L => { const out = []; let p = null;
+      birim.forEach(u => { if (p && p.h + u.h > L) { out.push(p); p = null; } if (!p) p = { el: [], h: 0 }; p.el.push(...u.el); p.h += u.h; });
+      if (p) out.push(p); return out; };
+    // Slayt sayısını artırmadan içeriği dengeli dağıt: sonda küçük artık kalmasın.
+    const n = dagit(bos).length; let lo = Math.max(...birim.map(u => u.h)), hi = Math.max(bos, lo);
+    for (let t = 0; t < 25; t++) { const m = (lo + hi) / 2; if (dagit(m).length <= n) hi = m; else lo = m; }
+    const parcalar = dagit(hi);
+    parcalar.forEach((pp, k) => SLAYT.push({ b: i + 1, parca: pp.el, k: k + 1, n: parcalar.length }));
+  });
+}
+function slaytGoster(i, yon) {
+  si = Math.max(0, Math.min(SLAYT.length - 1, i));
+  const S = SLAYT[si], el = BOLUMLER[S.b];
+  BOLUMLER.forEach(x => x.classList.remove('slide-on', 'ileri', 'geri'));
+  if (S.parca) {
+    el.querySelectorAll('.section-body > *').forEach(c => c.classList.toggle('gizli-p', !S.parca.includes(c)));
+    el.querySelector('.parca-no').textContent = S.n > 1 ? `(${S.k}/${S.n})` : '';
+  }
+  void el.offsetWidth; el.classList.add('slide-on', yon < 0 ? 'geri' : 'ileri'); el.scrollTop = 0;
+  $('sb-bilgi').textContent = `${si + 1} / ${SLAYT.length}  ·  ${KISIM[S.b] ? KISIM[S.b] + '  ·  ' : ''}${BASLIK[S.b]}`;
+  $('sb-ilerleme').style.width = (100 * (si + 1) / SLAYT.length) + '%';
+  $('sb-geri').disabled = si === 0; $('sb-ileri').disabled = si === SLAYT.length - 1;
+  requestAnimationFrame(() => el.querySelectorAll('canvas').forEach(c => { const ch = Chart.getChart(c); if (ch) ch.resize(); }));
+}
+function grafikYazi(n) { Chart.defaults.font.size = n; Object.values(Chart.instances).forEach(c => c.update('none')); }
+function sunumAc() { document.body.classList.add('sunum'); grafikYazi(Math.max(13, Math.round(innerWidth * 0.0095))); if (!document.fullscreenElement && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {}); parcala(); slaytGoster(SLAYT.findIndex(x => x.b === sonGorunen), 1); }
+function sunumKapat() {
+  document.body.classList.remove('sunum');
+  BOLUMLER.forEach(el => el.classList.remove('slide-on', 'ileri', 'geri'));
+  document.querySelectorAll('.gizli-p').forEach(c => c.classList.remove('gizli-p'));
+  document.querySelectorAll('.parca-no').forEach(x => x.textContent = '');
+  if (document.fullscreenElement) document.exitFullscreen();
+  grafikYazi(11); BOLUMLER[SLAYT[si].b].scrollIntoView(); Object.values(Chart.instances).forEach(c => c.resize());
+}
+let boyutZaman = null;
+window.addEventListener('resize', () => {
+  if (!document.body.classList.contains('sunum')) return;
+  clearTimeout(boyutZaman);
+  boyutZaman = setTimeout(() => { grafikYazi(Math.max(13, Math.round(innerWidth * 0.0095))); const S = SLAYT[si]; document.querySelectorAll('.gizli-p').forEach(c => c.classList.remove('gizli-p')); parcala();
+    const j = SLAYT.findIndex(x => x.b === S.b && S.parca && x.parca && x.parca.includes(S.parca[0])); slaytGoster(j >= 0 ? j : SLAYT.findIndex(x => x.b === S.b), 1); }, 250);
+});
+$('sunum-ac').onclick = sunumAc; $('sb-cik').onclick = sunumKapat;
+$('sb-ileri').onclick = () => slaytGoster(si + 1, 1); $('sb-geri').onclick = () => slaytGoster(si - 1, -1);
+$('sb-tam').onclick = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+document.addEventListener('keydown', e => {
+  if (!document.body.classList.contains('sunum')) return;
+  const t = e.target.tagName; if (t === 'INPUT' || t === 'SELECT' || t === 'TEXTAREA') return;
+  if (['ArrowRight', 'PageDown'].includes(e.key)) { e.preventDefault(); slaytGoster(si + 1, 1); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); slaytGoster(si - 1, -1); }
+  else if (e.key === 'Home') slaytGoster(0, -1);
+  else if (e.key === 'End') slaytGoster(SLAYT.length - 1, 1);
+  else if (e.key === 'Escape' && !document.fullscreenElement) sunumKapat();
+  else if (e.key === 'f' || e.key === 'F') $('sb-tam').click();
+});
+const gorunenObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !document.body.classList.contains('sunum')) sonGorunen = BOLUMLER.indexOf(e.target); }), { rootMargin: '-30% 0px -60% 0px' });
+BOLUMLER.forEach(el => gorunenObs.observe(el));
+
+
 </script>
 </body>
 </html>
