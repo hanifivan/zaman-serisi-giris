@@ -29,14 +29,14 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: #1a1a1a; }
   #sidebar { position: fixed; left: 0; top: 0; width: 230px; height: 100vh; background: var(--navy); overflow-y: auto; z-index: 100; padding: 0 0 2rem 0; }
-  #sidebar .logo { padding: 1.2rem 1rem; font-size: 15px; font-weight: 700; color: #fff; border-bottom: 1px solid #2a3d6e; background: var(--teal); line-height: 1.35; }
+  #sidebar .logo { padding: 1.2rem 1rem; font-size: 13.5px; font-weight: 700; color: #fff; border-bottom: 1px solid #2a3d6e; background: var(--teal); line-height: 1.35; }
   #sidebar .logo small { display: block; font-weight: 400; font-size: 11px; color: #d8f3f5; margin-top: 3px; }
   #sidebar a { display: block; padding: .55rem 1rem; font-size: 12px; color: #a8c8d8; text-decoration: none; border-left: 3px solid transparent; line-height: 1.4; transition: all .15s; }
   #sidebar a:hover { background: #243460; color: #fff; }
   #sidebar a.active { border-left-color: var(--mint); color: #fff; background: #243460; }
   #sidebar .section-label { padding: .7rem 1rem .25rem; font-size: 10px; font-weight: 700; color: #6b84a8; text-transform: uppercase; letter-spacing: .08em; }
   #main { margin-left: 230px; padding: 2rem; min-height: 100vh; }
-  .section { max-width: 900px; margin: 0 auto 3.5rem auto; background: var(--white); border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.07); overflow: hidden; }
+  .section { max-width: 1600px; margin: 0 auto 3.5rem auto; background: var(--white); border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.07); overflow: hidden; }
   .section-header { background: var(--navy); color: #fff; padding: .85rem 1.4rem; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: .75rem; }
   .section-header .num { background: var(--teal); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
   .section-body { padding: 1.4rem; }
@@ -60,8 +60,8 @@
   .info-box strong { color: var(--navy); }
   .warn-box { background: #FDF3E7; border-radius: 8px; padding: .85rem 1rem; font-size: 13px; color: #4a3a20; line-height: 1.8; margin-top: 1rem; }
   .warn-box strong { color: #9a5b00; }
-  .chart-wrap { position: relative; height: 300px; }
-  .chart-wrap-sm { position: relative; height: 220px; }
+  .chart-wrap { position: relative; height: clamp(300px, 42vh, 460px); }
+  .chart-wrap-sm { position: relative; height: clamp(220px, 30vh, 320px); }
   .cap { font-size: 12px; color: var(--gray); margin-bottom: 6px; }
   .src { font-size: 11px; color: var(--gray); margin-top: 6px; font-style: italic; }
   table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
@@ -96,15 +96,17 @@
   .qrow { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid #eee; font-size: 13px; flex-wrap: wrap; }
   .qrow .fb { font-size: 12px; font-weight: 700; min-width: 140px; text-align: right; }
   .ok { color: var(--c3); } .no { color: var(--c1); }
-  .hero { background: var(--navy); color: #fff; padding: 3rem 2rem; text-align: center; border-radius: 12px; margin: 0 auto 2rem auto; max-width: 900px; }
+  .hero { background: var(--navy); color: #fff; padding: 3rem 2rem; text-align: center; border-radius: 12px; margin: 0 auto 2rem auto; max-width: 1600px; }
   .hero h1 { font-size: 34px; margin-bottom: .6rem; }
   .hero .sub { color: #d8f3f5; font-size: 16px; margin-bottom: .9rem; }
   .hero p { color: #a8c8d8; font-size: 14.5px; max-width: 640px; margin: 0 auto 1.4rem; line-height: 1.6; }
   .badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
   .badge { padding: 5px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #fff; }
   .anchor { scroll-margin-top: 1rem; }
-  footer { max-width: 900px; margin: 0 auto 2rem; font-size: 12px; color: var(--gray); line-height: 1.7; text-align: center; }
+  footer { max-width: 1600px; margin: 0 auto 2rem; font-size: 12px; color: var(--gray); line-height: 1.7; text-align: center; }
   #menuBtn { display: none; }
+  #fsBtn { position: fixed; top: 12px; right: 14px; z-index: 200; background: var(--teal); color: #fff; border: none; font-size: 12.5px; padding: 7px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  #fsBtn:hover { background: #016b78; }
   @media (max-width: 860px) {
     #sidebar { transform: translateX(-100%); transition: transform .2s; }
     #sidebar.open { transform: none; }
@@ -117,6 +119,7 @@
 </style>
 </head>
 <body>
+<button id="fsBtn" onclick="tamEkran()" title="Tam ekran (F)">⛶ Tam ekran</button>
 <button id="menuBtn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ Bölümler</button>
 
 <nav id="sidebar">
@@ -839,6 +842,9 @@ const obs = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersect
 document.querySelectorAll(".section").forEach(s => obs.observe(s));
 links.forEach(a => a.addEventListener("click", () => $("sidebar").classList.remove("open")));
 
+function tamEkran(){ if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {}); else document.exitFullscreen(); }
+document.addEventListener("fullscreenchange", () => { $("fsBtn").textContent = document.fullscreenElement ? "✕ Tam ekrandan çık" : "⛶ Tam ekran"; });
+document.addEventListener("keydown", e => { if ((e.key === "f" || e.key === "F") && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) tamEkran(); });
 build3(); build4(); build6(); build7(); build8(); build9(); build10(); build11(); build12(); renderTable13(); buildAll13();
 </script>
 </body>
