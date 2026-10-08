@@ -6,7 +6,7 @@ Ekonometrinin amaçları, veri tipleri, zaman serisinin unsurları (trend, mevsi
 
 Sayfa: https://hanifivan.github.io/zaman-serisi-giris/
 
-- `index.html`: etkileşimli ders notu. Tek dosyadır; indirildiğinde internet olmadan da açılır. Bütün grafikler ve hesaplamalar (trend regresyonu, ANOVA, güven ve öngörü aralıkları, MSE, MAD, öngörü sapması, mevsimsel ayrıştırma) tarayıcıda canlı yapılır. Sayfa ekran genişliğine yayılır; sağ üstteki "Tam ekran" düğmesi ya da F tuşu tarayıcıyı tam ekrana alır.
+- `index.html`: etkileşimli ders notu. Tek dosyadır; indirildiğinde internet olmadan da açılır. Bütün grafikler ve hesaplamalar (trend regresyonu, ANOVA, güven ve öngörü aralıkları, MSE, MAD, öngörü sapması, mevsimsel ayrıştırma) tarayıcıda canlı yapılır. Sayfa ekran genişliğine yayılır; sol menüdeki "Tam ekran" düğmesi ya da F tuşu tarayıcıyı tam ekrana alır.
 
 Veriler: Dünya Bankası WDI (Türkiye GSYH büyüme oranı ve doğrudan yabancı yatırım, 1973-2024) ve ders sunumundaki seriler (GSMH 1968-2005, çeyreklik GSYİH 1998-2008, imalat sanayi endeksi 1997-2008, dışa açılma oranları, dondurma satışları).
 
